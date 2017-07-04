@@ -32,6 +32,7 @@ var Clock = React.createClass({
 
     var {totalSeconds} = this.props;
 
+    console.log("colck component ==>", totalSeconds);
 
     return (
       <div className="clock">
