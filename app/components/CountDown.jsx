@@ -7,22 +7,48 @@ var CountDown = React.createClass({
   getInitialState : function () {
       return (
         {
-          seconds : 0
+          seconds : 0,
+          countdownStatus : 'stopped'
         }
       );
   },
 
+  componentDidUpdate : function(prevProps, prevState) {
+    if(this.state.countdownStatus !== prevState.countdownStatus) {
+      switch(this.state.countdownStatus) {
+        case 'started' :
+        this.startTimer();
+        break;
+      }
+    }
+  },
+
+  startTimer : function () {
+
+    this.timer = setInterval (() => {
+
+      var newCount =this.state.seconds - 1;
+
+      this.setState({
+        seconds : newCount >= 0 ? newCount : 0
+      });
+
+    }, 1000);
+
+  },
   handleSetCountDown : function (strSeconds) {
-    console.log("seconds ===>" ,strSeconds);
+
     this.setState({
-      seconds : strSeconds
+      seconds : strSeconds,
+      countdownStatus : 'started'
     });
+
   },
   render : function () {
 
-    var {seconds} = this.state;
+    var {seconds, countdownStatus} = this.state;
 
-    console.log("countDown componet ==> ", seconds);
+    console.log("current  state ==>", this.state.conuntdownStatus);
 
     return (
       <div>

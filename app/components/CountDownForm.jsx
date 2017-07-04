@@ -9,8 +9,7 @@ var CountDownForm = React.createClass({
     if(seconds.match(/^[0-9]*$/)) {
       this.props.onSetCountDown(parseInt(seconds, 10));
     }
-
-  },
+  },  
   render : function () {
     return (
       <div>
