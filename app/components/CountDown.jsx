@@ -1,9 +1,16 @@
 var React = require('react');
+var Clock = require('Clock');
+var CountDownForm = require('CountDownForm');
 
 var CountDown = React.createClass({
 
   render : function () {
-    return <p> rendered countdown.jsx</p>;
+    return (
+      <div>
+        <Clock totalSeconds={62} />
+        <CountDownForm/>
+      </div>
+    );
   }
 });
 
