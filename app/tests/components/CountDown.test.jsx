@@ -5,6 +5,7 @@ var $ = require('jQuery');
 var TestUtils = require('react-addons-test-utils');
 
 var CountDown = require('CountDown');
+var Controls = require('Controls');
 
 describe('CountDown', () => {
 
@@ -34,4 +35,35 @@ describe('handleSetCountDown', () => {
     }, 2001);
 
   });
+
+  it('Should not change value of the seconds when pause is clicked', (done) => {
+
+      var countdown = TestUtils.renderIntoDocument(<CountDown/>);
+      countdown.handleSetCountDown(2);
+      countdown.handleOnStatusChange('pause');
+
+      setTimeout(()=>{
+        expect(countdown.state.seconds).toBe(2);
+        expect(countdown.state.countdownStatus).toBe("pause");
+        done();
+      }, 1000);
+
+
+  });
+
+  it('Should  change count to 0 seconds when clear button is clicked', (done) => {
+
+      var countdown = TestUtils.renderIntoDocument(<CountDown/>);
+      countdown.handleSetCountDown(2);
+      countdown.handleOnStatusChange('stopped');
+
+      setTimeout(()=>{
+        expect(countdown.state.seconds).toBe(0);
+        expect(countdown.state.countdownStatus).toBe("stopped");
+        done();
+      }, 2000);
+
+
+  });
+
 });
