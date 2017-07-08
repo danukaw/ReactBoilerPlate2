@@ -51,19 +51,4 @@ describe('handleSetCountDown', () => {
 
   });
 
-  it('Should  change count to 0 seconds when clear button is clicked', (done) => {
-
-      var countdown = TestUtils.renderIntoDocument(<CountDown/>);
-      countdown.handleSetCountDown(2);
-      countdown.handleOnStatusChange('stopped');
-
-      setTimeout(()=>{
-        expect(countdown.state.seconds).toBe(0);
-        expect(countdown.state.countdownStatus).toBe("stopped");
-        done();
-      }, 2000);
-
-
-  });
-
 });

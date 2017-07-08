@@ -11,12 +11,11 @@ var Timer = require('Timer');
 
 
 // load foundations-sites
-require('style!css!foundation-sites/dist/css/foundation.min.css');
 $(document).foundation();
 
 
 require('style!css!sass!ApplicationStyles');
- 
+
 ReactDOM.render(
   <Router history={hashHistory}>
       <route path="/" component={Main}>

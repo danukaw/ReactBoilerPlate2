@@ -2,14 +2,18 @@ var React = require('react');
 
 var CountDownForm = React.createClass({
 
+
   onSubmit : function(e) {
+
     e.preventDefault();
     var seconds = this.refs.seconds.value;
-    console.log(seconds);
+
+    console.log("number of input feild -->", $('input').length);
+
     if(seconds.match(/^[0-9]*$/)) {
       this.props.onSetCountDown(parseInt(seconds, 10));
     }
-  },  
+  },
   render : function () {
     return (
       <div>
